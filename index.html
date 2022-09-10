@@ -10,7 +10,7 @@
   <body>
     <div id="time">
       <div class="circle" style="--clr: #ff2972">
-        <div class="dots"></div>
+        <div class="dots hour_dot"></div>
         <svg>
           <circle cx="70" cy="70" r="70"></circle>
           <circle cx="70" cy="70" r="70" id="hh"></circle>
@@ -18,7 +18,7 @@
         <div id="hours">00</div>
       </div>
       <div class="circle" style="--clr: #fee800">
-        <div class="dots"></div>
+        <div class="dots min_dot"></div>
         <svg>
           <circle cx="70" cy="70" r="70"></circle>
           <circle cx="70" cy="70" r="70" id="mm"></circle>
@@ -26,7 +26,7 @@
         <div id="minutes">00</div>
       </div>
       <div class="circle" style="--clr: #04fc43">
-        <div class="dots"></div>
+        <div class="dots sec_dot"></div>
         <svg>
           <circle cx="70" cy="70" r="70"></circle>
           <circle cx="70" cy="70" r="70" id="ss"></circle>
@@ -37,6 +37,7 @@
         <div id="ampm">AM</div>
       </div>
     </div>
+
     <script>
       setInterval(() => {
         let hours = document.getElementById("hours");
@@ -47,6 +48,10 @@
         let hh = document.getElementById("hh");
         let mm = document.getElementById("mm");
         let ss = document.getElementById("ss");
+
+        let hourDot = document.querySelector(".hour_dot");
+        let minDot = document.querySelector(".min_dot");
+        let secDot = document.querySelector(".sec_dot");
 
         let h = new Date().getHours();
         let m = new Date().getMinutes();
@@ -74,6 +79,13 @@
         //60 minutes
         ss.style.strokeDashoffset = 440 - (440 * s) / 60;
         //60 seconds
+
+        hourDot.style.transform = `rotate(${h * 30}deg)`;
+        //360/12=30 --krug ima 360 stepeni i podeli se sa 12-casovnim vremenom
+        minDot.style.transform = `rotate(${m * 6}deg)`;
+        //360/60 =6 --deli se sa 60min koliko ima jedan sat
+        secDot.style.transform = `rotate(${s * 6}deg)`;
+        //360/60 =6 --deli se sa 60sec koliko ima jedan minut
       });
 
       /*   const intervalID = setInterval(myCallback, 500, 5, 7);
@@ -82,5 +94,6 @@
         console.log(a + b);
       } */
     </script>
+    <script src="practice.js"></script>
   </body>
 </html>
