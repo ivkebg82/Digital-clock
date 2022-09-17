@@ -67,6 +67,7 @@ body {
   position: absolute;
   width: 15px;
   height: 15px;
+  top: -3px;
   border-radius: 50%;
   background: var(--clr);
   box-shadow: 0 0 30px var(--clr), 0 0 50px var(--clr);
